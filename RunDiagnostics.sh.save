@@ -1,0 +1,20 @@
+# ------------ STEP ONE: RUN NEOFETCH, WHICH CREATES CUTE ASCII ART ------------
+neofetch
+# ------------ STEP TWO: PERFORM SYSTEM RESOURCE DIAGNOSTICS --------------
+echo -e "\033[34;47m ----------------- SYSTEM RESOURCES --------------------"
+stats=$(mpstat)
+echo "mpstat done"
+CPU_Idle=$(awk '{print $NF}' <<< "$stats") ----------------- SYSTEM RESOURCES --------------------
+File - is unavailable.
+CPU Utilisation: %
+These programs are using the most CPU resources in your system:
+  17303 pts/0    00:00:00 sort
+  17302 pts/0    00:00:00 ps
+  17304 pts/0    00:00:00 head
+  17150 pts/0    00:00:00 bash
+    377 pts/0    00:00:00 bash
+CPU_Live=$(bc <<< 100 - bc <<< $CPU_Idle)
+echo "CPU Utilisation: $CPU_Live%"
+echo "These programs are using the most CPU resources in your system:"
+ps | sort -k 3 -r | head -n 5
+echo -e "\033[0m"
