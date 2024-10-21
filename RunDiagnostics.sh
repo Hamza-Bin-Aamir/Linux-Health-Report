@@ -1,4 +1,5 @@
 # ------------ STEP ONE: RUN NEOFETCH, WHICH CREATES CUTE ASCII ART ------------
+(type -p neofetch >/dev/null || (sudo add-apt-repository ppa:dawidd0811/neofetch && sudo apt update && sudo apt install neofetch -y))
 neofetch
 # ------------ STEP TWO: PERFORM SYSTEM RESOURCE DIAGNOSTICS --------------
 echo -e "\033[34;47m" 
